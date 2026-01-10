@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Online Form Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+    <header>
+        <h1>Online Form Builder</h1>
+        <button id="exportBtn">Export JSON</button>
+    </header>
+
+    <main>
+        <!-- Left Panel -->
+        <section class="controls">
+            <h3>Add Fields</h3>
+            <button onclick="addField('text')">Text</button>
+            <button onclick="addField('email')">Email</button>
+            <button onclick="addField('textarea')">Textarea</button>
+            <button onclick="addField('select')">Select</button>
+        </section>
+
+        <!-- Right Panel -->
+        <section class="preview">
+            <h3>Form Preview</h3>
+            <form id="formPreview"></form>
+        </section>
+    </main>
+
+    <!-- JSON Modal -->
+    <div class="modal" id="jsonModal">
+        <div class="modal-content">
+            <h3>Form JSON</h3>
+            <pre id="jsonOutput"></pre>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

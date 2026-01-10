@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi-Step Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .form-container {
+            width: 420px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .progress div {
+            width: 100%;
+            height: 5px;
+            background: #e0e0e0;
+            margin: 0 5px;
+            border-radius: 10px;
+        }
+
+        .progress div.active {
+            background: #667eea;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fade 0.4s ease;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-prev {
+            background: #ccc;
+            color: #333;
+        }
+
+        .btn-next {
+            background: #667eea;
+            color: #fff;
+        }
+
+        .btn-next:hover {
+            background: #556cd6;
+        }
+
+        .success {
+            text-align: center;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Register Account</h2>
+
+    <div class="progress">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <form id="multiForm">
+        <!-- Step 1 -->
+        <div class="step active">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <div class="buttons">
+                <span></span>
+                <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <label>Username</label>
+            <input type="text" placeholder="Choose a username" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Create a password" required>
+
+            <div class="buttons">
+                <button type="button" class="btn-prev" onclick="prevStep()">Back</button>
+                <button type="button" class="btn-next" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter phone number">
+
+            <label>City</label>
+            <input type="text" placeholder="Enter your city">
+
+            <div class="buttons">
+                <button type="button" class="btn-prev" onclick="prevStep()">Back</button>
+                <button type="submit" class="btn-next">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const progress = document.querySelectorAll(".progress div");
+
+    function updateForm() {
+        steps.forEach((step, index) => {
+            step.classList.toggle("active", index === currentStep);
+            progress[index].classList.toggle("active", index <= currentStep);
+        });
+    }
+
+    function nextStep() {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateForm();
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 0) {
+            currentStep--;
+            updateForm();
+        }
+    }
+</script>
+
+</body>
+</html>
