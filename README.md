@@ -19,34 +19,6 @@ Topics covered include:
 
 ---
 
-## 📂 Projects
-
-| Project Name | Description | Live Demo |
-|-------------|------------|-----------|
-| Project One | Short description of the project | Coming Soon |
-| Project Two | Short description of the project | Coming Soon |
-
----
-
-## 📁 Folder Structure
-
-javascript-projects/
-│
-├── project-one/
-│ ├── index.html
-│
-├── project-two/
-│ ├── index.html
-│ └── script.js
-│
-├── project-three/
-│ ├── index.html
-│ └── script.js
-│
-└── README.md
-
----
-
 ## ▶️ How to Run the Projects
 
 1. Clone the repository:
